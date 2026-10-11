@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[58]:
 
 
 from langchain_community.document_loaders import PyPDFDirectoryLoader
@@ -18,7 +18,9 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 import markdown
-from xhtml2pdf import pisa
+from pathlib import Path
+from fpdf import FPDF, FontFace
+from PIL import Image as PILIMAGE
 
 import theme
 import data_cleaner
@@ -42,7 +44,7 @@ import sys
 import contextlib
 import io
 import re
-from IPython.display import Image, Markdown, display
+from IPython.display import Image as IPythonImage, Markdown, display
 import unicodedata
 from typing import Optional
 
@@ -57,7 +59,8 @@ else:
                     "Verificá que el archivo .env exista en la raíz del proyecto "
                     "y contenga la variable GEMINI_API_KEY"
   )
-# Enbeddings
+
+# Embeddings
 embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
 
 os.makedirs("./generated_images", exist_ok=True)
@@ -87,9 +90,99 @@ retriever = vectorstore.as_retriever(
 )
 
 
+# In[ ]:
+
+
+# Celda para ver que fuentes fueron cargadas
+data = vectorstore._collection.get(
+  include=["metadatas"]
+)
+
+for id_, metadata in zip(data["ids"], data["metadatas"]):
+  print(id_, metadata.get('source'))
+
+
+# In[26]:
+
+
+# Celda para borrar fuentes manualmente
+
+archivo = 'nombre_archivo'
+
+vectorstore._collection.delete(
+  where={'source': f'files\\{archivo}.pdf'}
+)
+
+print(
+  "Documentos restantes:",
+  vectorstore._collection.count()
+)
+
+
+# ## Cargar PDFs y generar base vectorial Chroma
+# 
+# **NOTA:** *Se detectan documentos existentes ya cargados. Solo se tienen en cuenta documentos nuevos.*
+
+# In[3]:
+
+
+# Lista de documentos existentes
+registros_existentes = vectorstore._collection.get(include=["metadatas"])
+fuentes_procesadas = set()
+
+if registros_existentes and registros_existentes.get("metadatas"):
+    for meta in registros_existentes["metadatas"]:
+        if meta and "source" in meta:
+            fuentes_procesadas.add(os.path.abspath(meta["source"]))
+
+# Cargar PDFs
+loader = PyPDFDirectoryLoader("files")
+todos_los_documentos = loader.load()
+
+# Documentos nuevos
+documentos_nuevos = [
+    doc for doc in todos_los_documentos 
+    if os.path.abspath(doc.metadata.get("source", "")) not in fuentes_procesadas
+]
+
+print(f"Páginas detectadas nuevas: {len(documentos_nuevos)}")
+
+if len(documentos_nuevos) == 0:
+    print("No hay documentos nuevos para agregar.")
+else:
+
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=50
+    )
+    docs_split_nuevos = text_splitter.split_documents(documentos_nuevos)
+    print(f"Nuevos fragmentos generados: {len(docs_split_nuevos)}")
+
+    # Tener en cuenta los limites de la API
+    batch_size = 75
+    total = len(docs_split_nuevos)
+
+    for i in range(0, total, batch_size):
+        lote = docs_split_nuevos[i:i + batch_size]
+
+        print(f"Procesando lote {i // batch_size + 1}: documentos {i + 1} a {min(i + batch_size, total)}")
+
+        # add_documents agrega sin borrar el contenido anterior
+        vectorstore.add_documents(lote)
+
+        print(f"Documentos guardados hasta ahora: {vectorstore._collection.count()}")
+
+        if i + batch_size < total:
+            print("Esperando 60 segundos para respetar la cuota...\n")
+            time.sleep(60)
+
+    print("\nNuevos documentos agregados correctamente.")
+    print("Total actualizado de documentos almacenados:", vectorstore._collection.count())
+
+
 # ## Funciones de ayuda
 
-# In[151]:
+# In[59]:
 
 
 def normalizar_texto(texto: str) -> str:
@@ -163,7 +256,7 @@ def procesar_y_renderizar_respuesta(resultado: dict) -> str:
 
     if path_imagen and os.path.exists(path_imagen):
       if path_imagen not in imagenes_mostradas:
-        display(Image(filename=path_imagen))
+        display(IPythonImage(filename=path_imagen))
         imagenes_mostradas.add(path_imagen)
     else:
       print(f"⚠️ No se encontró la imagen generada: {path_imagen}")
@@ -188,7 +281,7 @@ def procesar_y_renderizar_respuesta(resultado: dict) -> str:
   for path_imagen in imagenes_generadas:
     if path_imagen not in imagenes_mostradas:
       if os.path.exists(path_imagen):
-        display(Image(filename=path_imagen))
+        display(IPythonImage(filename=path_imagen))
         imagenes_mostradas.add(path_imagen)
       else:
         print(f"⚠️ No se encontró la imagen generada: {path_imagen}")
@@ -222,7 +315,7 @@ def obtener_ultimo_mes_completo():
 
 # ## Carga de datasets
 
-# In[149]:
+# In[4]:
 
 
 # ================================================================
@@ -1035,7 +1128,7 @@ def comparar_temperaturas_estaciones(
     return resumen
 
 
-# In[56]:
+# In[10]:
 
 
 # Herramienta para graficar ubicacion de las estaciones, en todo el pais o por provincia
@@ -1343,7 +1436,7 @@ def generar_mapa_estaciones(
     return f"IMAGEN_GENERADA:{nombre_archivo}"
 
 
-# In[58]:
+# In[11]:
 
 
 # Herramienta para generar climogramas
@@ -1750,7 +1843,7 @@ def graficar_pronostico_estacion(estacion: str) -> str:
     return resumen
 
 
-# In[129]:
+# In[13]:
 
 
 # Herramienta para encontrar estaciones cercanas
@@ -1881,11 +1974,7 @@ def buscar_estaciones_cercanas(estacion: str, n_estaciones: int = 3) -> str:
     return "\n".join(respuesta)
 
 
-
 # ## Configuracion de los agentes
-
-# In[139]:
-
 
 # =========================================================
 # AGENTE ANALISTA
@@ -1894,7 +1983,7 @@ def buscar_estaciones_cercanas(estacion: str, n_estaciones: int = 3) -> str:
 llm = ChatGoogleGenerativeAI(
     model="gemini-3.5-flash-lite",
     # temperature=0,
-    max_output_tokens=2048,
+    max_output_tokens=10000,
     api_key=api_key
 )
 
@@ -1946,7 +2035,7 @@ agent = create_tool_calling_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, return_intermediate_steps=True)
 
 
-# In[155]:
+# In[ ]:
 
 
 # =========================================================
@@ -1955,7 +2044,7 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, return_in
 llm_redactor = ChatGoogleGenerativeAI(
     model="gemini-3.5-flash-lite",
     temperature=0.3,
-    max_output_tokens=4096,
+    max_output_tokens=10000,
     api_key=api_key
 )
 
@@ -2160,123 +2249,334 @@ def responder_usuario(pregunta: str, chat_history=[]) -> dict:
         })
 
 
-# In[143]:
+# In[57]:
 
+
+def normalizar_listas_markdown(texto: str) -> str:
+    """
+    Normaliza la separación de listas Markdown.
+
+    Inserta una línea en blanco antes y después de cada bloque
+    de lista cuando sea necesario.
+    """
+
+    lineas = texto.splitlines()
+    resultado = []
+
+    patron_item = re.compile(r"^\s{0,3}(?:[-+*]|\d+[.)])\s+")
+
+    for i, linea in enumerate(lineas):
+        es_item = bool(patron_item.match(linea))
+
+        anterior_es_item = (
+            i > 0 and bool(patron_item.match(lineas[i - 1]))
+        )
+
+        # Inicio de una lista después de texto normal
+        if es_item and not anterior_es_item:
+            if resultado and resultado[-1].strip():
+                resultado.append("")
+
+        # Final de una lista antes de otro párrafo
+        if not es_item and i > 0:
+            if patron_item.match(lineas[i - 1]) and linea.strip():
+                resultado.append("")
+
+        resultado.append(linea)
+
+    return "\n".join(resultado)
+
+
+# =========================================================
+# CLASE PDF PARA INFORMES METEOROLÓGICOS
+# =========================================================
+
+class InformeMeteorologicoPDF(FPDF):
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("ArialPDF", size=9)
+        self.set_text_color(113, 128, 150)
+
+        self.cell(
+            0,
+            10,
+            f"Página {self.page_no()}",
+            align="R"
+        )
+
+
+# =========================================================
+# GENERACIÓN DE PDF DESDE MARKDOWN
+# =========================================================
 
 def guardar_markdown_a_pdf(contenido_markdown, estacion: str) -> str:
-    # Garantizar que sea siempre un string
+    """
+    Genera un informe meteorológico en PDF utilizando fpdf2.
+
+    - Convierte Markdown a HTML para renderizar texto y tablas.
+    - Inserta imágenes directamente usando pdf.image().
+    - Adapta el tamaño según la orientación de cada imagen.
+    - Mantiene las proporciones originales.
+    - Aplica paginación automática.
+
+    Retorna:
+        str: Ruta del PDF generado.
+    """
+
+    # 1. Normalizar contenido
     if not isinstance(contenido_markdown, str):
         contenido_markdown = str(contenido_markdown)
 
-    # 1. Crear carpeta 'reports' si no existe
-    carpeta_destino = "reports"
-    os.makedirs(carpeta_destino, exist_ok=True)
+    # 2. Preparar archivo de salida
+    carpeta_destino = Path("reports")
+    carpeta_destino.mkdir(parents=True, exist_ok=True)
 
-    # 2. Formatear nombre del archivo
-    estacion_limpia = re.sub(r'[^a-zA-Z0-9_]', '', estacion.upper().replace(" ", "_"))
-    nombre_archivo = f"informe_meteorologico_{estacion_limpia}.pdf"
-    ruta_pdf = os.path.join(carpeta_destino, nombre_archivo)
+    estacion_limpia = re.sub(
+        r"[^a-zA-Z0-9_]",
+        "",
+        estacion.upper().replace(" ", "_")
+    )
 
-    # 3. Reemplazar los marcadores [[IMAGEN_GENERADA:<ruta>]] por etiquetas <img>
-    def reemplazar_imagen(match):
-        ruta_img = match.group(1)
-        return f'<br/><div style="text-align: center;"><img src="{ruta_img}" style="max-width: 90%; height: auto; border: 1px solid #ddd; margin: 10px 0;"/></div><br/>'
+    ruta_pdf = carpeta_destino / (
+        f"informe_meteorologico_{estacion_limpia}.pdf"
+    )
 
-    contenido_html_body = re.sub(
-        r'\[\[IMAGEN_GENERADA:(.*?)\]\]', 
-        reemplazar_imagen, 
+    # 3. Inicializar PDF
+    pdf = InformeMeteorologicoPDF(
+        orientation="P",
+        unit="mm",
+        format="Letter"
+    )
+
+    pdf.set_margins(left=20, top=20, right=20)
+    pdf.set_auto_page_break(auto=True, margin=20)
+
+    # 4. Configurar fuentes Unicode
+    carpeta_fuentes = Path("C:/Windows/Fonts")
+
+    fuentes = {
+        "": "arial.ttf",
+        "B": "arialbd.ttf",
+        "I": "ariali.ttf",
+        "BI": "arialbi.ttf"
+    }
+
+    for estilo, archivo in fuentes.items():
+        ruta_fuente = carpeta_fuentes / archivo
+
+        if not ruta_fuente.is_file():
+            raise FileNotFoundError(
+                f"No se encontró la fuente: {ruta_fuente}"
+            )
+
+        pdf.add_font(
+            family="ArialPDF",
+            style=estilo,
+            fname=str(ruta_fuente)
+        )
+
+    pdf.add_page()
+    pdf.set_font("ArialPDF", size=11)
+    pdf.set_text_color(45, 55, 72)
+
+    # 5. Estilos HTML compatibles con fpdf2
+    estilos_html = {
+        "h1": FontFace(
+            color="#1A365D",
+            size_pt=20,
+            emphasis="B"
+        ),
+        "h2": FontFace(
+            color="#2B6CB0",
+            size_pt=14,
+            emphasis="B"
+        ),
+        "h3": FontFace(
+            color="#2D3748",
+            size_pt=12,
+            emphasis="B"
+        )
+    }
+
+    # =====================================================
+    # FUNCIÓN INTERNA: RENDERIZAR TEXTO MARKDOWN
+    # =====================================================
+
+    def insertar_texto(html):
+        if not html.strip():
+            return
+
+        # Configuración del interlineado
+        INTERLINEADO = 1.5
+
+        # Aplicar interlineado a párrafos y listas
+        html = re.sub(
+            r"<(p|ul|ol|li)(?=[\s>])",
+            lambda m: (
+                f'<{m.group(1)} style="line-height: {INTERLINEADO}"'
+            ),
+            html,
+            flags=re.IGNORECASE
+        )
+
+        pdf.set_font("ArialPDF", size=11)
+        pdf.set_text_color(45, 55, 72)
+
+        pdf.write_html(
+            html,
+            font_family="ArialPDF",
+            tag_styles=estilos_html,
+            table_line_separators=True
+        )
+
+    # =====================================================
+    # FUNCIÓN INTERNA: INSERTAR IMAGEN DIRECTAMENTE
+    # =====================================================
+
+    def insertar_imagen(ruta_original):
+        ruta_img = Path(
+            ruta_original.strip()
+        ).expanduser().resolve()
+
+        if not ruta_img.is_file():
+            raise FileNotFoundError(
+                f"No se encontró la imagen: {ruta_img}"
+            )
+
+        # Leer dimensiones originales
+        with PILIMAGE.open(ruta_img) as imagen:
+            ancho_px, alto_px = imagen.size
+
+        if ancho_px <= 0 or alto_px <= 0:
+            raise ValueError(
+                f"Dimensiones de imagen inválidas: {ruta_img}"
+            )
+
+        # Área disponible en la página
+        ancho_disponible = (
+            pdf.w - pdf.l_margin - pdf.r_margin
+        )
+
+        alto_disponible = (
+            pdf.h - pdf.t_margin - pdf.b_margin
+        )
+
+        # =================================================
+        # DIMENSIONAMIENTO SEGÚN ORIENTACIÓN
+        # =================================================
+
+        relacion_aspecto = ancho_px / alto_px
+
+        if relacion_aspecto < 1:
+            # Imagen vertical: limitar principalmente altura
+            max_ancho = ancho_disponible * 0.65
+            max_alto = alto_disponible * 0.65
+
+        else:
+            # Imagen horizontal: priorizar ancho
+            max_ancho = ancho_disponible * 0.95
+            max_alto = alto_disponible * 0.75
+
+        # Escalar respetando ambos límites
+        escala = min(
+            max_ancho / ancho_px,
+            max_alto / alto_px
+        )
+
+        ancho_img = ancho_px * escala
+        alto_img = alto_px * escala
+
+        # =================================================
+        # PAGINACIÓN Y CENTRADO
+        # =================================================
+
+        espacio_restante = (
+            pdf.h - pdf.b_margin - pdf.get_y()
+        )
+
+        margen_vertical = 12
+
+        if alto_img + margen_vertical > espacio_restante:
+            pdf.add_page()
+
+        # Centrar horizontalmente
+        x = (pdf.w - ancho_img) / 2
+        y = pdf.get_y() + 4
+
+        # Insertar imagen conservando proporciones
+        pdf.image(
+            str(ruta_img),
+            x=x,
+            y=y,
+            w=ancho_img,
+            h=alto_img
+        )
+
+        # Continuar debajo de la imagen
+        pdf.set_y(y + alto_img + 8)
+
+    # =====================================================
+    # 6. PROCESAR MARKDOWN E IMÁGENES EN ORDEN
+    # =====================================================
+
+    patron_imagen = re.compile(
+        r"\[\[IMAGEN_GENERADA:\s*(.*?)\s*\]\]",
+        flags=re.DOTALL
+    )
+
+    rutas_imagenes = []
+
+    def preparar_marcador(match):
+        ruta_imagen = match.group(1).strip()
+        indice = len(rutas_imagenes)
+
+        rutas_imagenes.append(ruta_imagen)
+
+        return f"\n\n<!--PDF_IMAGE_{indice}-->\n\n"
+
+
+    # Sustituir temporalmente los marcadores
+    markdown_preparado = patron_imagen.sub(
+        preparar_marcador,
         contenido_markdown
     )
 
-    # 4. Convertir Markdown a HTML
-    html_convertido = markdown.markdown(
-        contenido_html_body, 
-        extensions=['tables', 'fenced_code', 'nl2br']
+    # Corregir separación de listas
+    markdown_preparado = normalizar_listas_markdown(
+        markdown_preparado
     )
 
-    # 5. Plantilla HTML con CSS profesional para el PDF
-    documento_html = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <style>
-            @page {{
-                size: letter;
-                margin: 2cm;
-                @bottom-right {{
-                    content: "Página " counter(page) " de " counter(pages);
-                    font-size: 9pt;
-                    color: #718096;
-                }}
-            }}
-            body {{
-                font-family: Helvetica, Arial, sans-serif;
-                color: #2D3748;
-                line-height: 1.5;
-                font-size: 11pt;
-            }}
-            h1 {{
-                color: #1A365D;
-                font-size: 20pt;
-                border-bottom: 2px solid #3182CE;
-                padding-bottom: 8px;
-                margin-bottom: 15px;
-            }}
-            h2 {{
-                color: #2B6CB0;
-                font-size: 14pt;
-                margin-top: 18px;
-                margin-bottom: 8px;
-                border-bottom: 1px solid #E2E8F0;
-            }}
-            h3 {{
-                color: #2D3748;
-                font-size: 12pt;
-            }}
-            p, li {{
-                color: #4A5568;
-            }}
-            ul, ol {{
-                margin-left: 15px;
-            }}
-            strong {{
-                color: #1A202C;
-            }}
-            table {{
-                width: 100%;
-                margin: 15px 0;
-            }}
-            th, td {{
-                border: 1px solid #CBD5E0;
-                padding: 8px;
-                text-align: left;
-            }}
-            th {{
-                background-color: #E2E8F0;
-                color: #1A202C;
-            }}
-        </style>
-    </head>
-    <body>
-        {html_convertido}
-    </body>
-    </html>
-    """
+    # Convertir el documento completo a HTML
+    html_completo = markdown.markdown(
+        markdown_preparado,
+        extensions=["tables", "fenced_code", "sane_lists"]
+    )
 
-    # 6. Generar el PDF usando xhtml2pdf
-    with open(ruta_pdf, "wb") as pdf_file:
-        pisa_status = pisa.CreatePDF(documento_html, dest=pdf_file)
+    # Separar texto e imágenes
+    fragmentos = re.split(
+        r"<!--PDF_IMAGE_(\d+)-->",
+        html_completo
+    )
 
-    if pisa_status.err:
-        raise Exception(f"Error al generar el PDF: {pisa_status.err}")
+    for indice, fragmento in enumerate(fragmentos):
+        if indice % 2 == 0:
+            insertar_texto(fragmento)
+        else:
+            insertar_imagen(rutas_imagenes[int(fragmento)])
 
-    return ruta_pdf
+    # 7. Guardar PDF
+    pdf.output(str(ruta_pdf))
+
+    # 8. Retornar ruta
+    return str(ruta_pdf)
 
 
 # ### Funciones para consultar agente
+# 
+# Consulta individual y chat interactivo.
 
-# In[107]:
+# In[52]:
 
 
 # =========================================================
@@ -2341,6 +2641,51 @@ def iniciar_chat_interactivo():
         except Exception as e:
             print(f"\n❌ Ocurrió un error: {e}\n")
 
+# #### Funcion de consulta para ver los todos los pasos que realiza el agente
+
+# In[56]:
+
+
+def consultar_agente_debug(pregunta: str):
+    """Versión de depuración limpia: reutiliza tus funciones existentes y muestra trazas."""
+    print(f"🔍 [DEBUG] Pregunta analizada: '{pregunta}'\n")
+
+    # Evaluamos la intención con el router que ya usás
+    evaluacion = llm_router.invoke(
+        f"Analizá la intención de esta pregunta del usuario: '{pregunta}'"
+    )
+
+    if evaluacion.es_pedido_informe_completo and evaluacion.estacion:
+        print(f"📋 [Modo Informe] Estación detectada por el router: {evaluacion.estacion}\n")
+        print("--- Ejecutando generación de informe completo ---")
+
+        # Reutilizamos tu función de informe (podés adaptarla si querés capturar pasos internos)
+        resultado = generar_informe_estacion_completo(evaluacion.estacion, agent_executor)
+
+        print("\n--- Resultado de la Cadena Redactora ---")
+        print(str(resultado.get("output", ""))[:500] + "...\n")
+        return resultado
+
+    else:
+        print("💬 [Modo Consulta Común] Ejecutando agente estándar...\n")
+        resultado = agent_executor.invoke({"input": pregunta})
+
+        print(f"Cantidad de pasos intermedios: {len(resultado.get('intermediate_steps', []))}")
+
+        for i, (action, observation) in enumerate(resultado.get("intermediate_steps", [])):
+            print(f"\n--- Paso {i+1} ---")
+            print(f"Herramienta llamada: {action.tool}")
+            print(f"Argumentos: {action.tool_input}")
+            print(f"Observación (primeros 200 caracteres): {str(observation)[:200]}")
+
+        return resultado
+
+
+# #### Funcion de consulta para Streamlit
+
+# In[60]:
+
+
 def responder_usuario_para_streamlit(pregunta: str, chat_history_list: list) -> dict:
     """Función adaptadora para Streamlit."""
     langchain_history = []
@@ -2386,7 +2731,7 @@ def responder_usuario_para_streamlit(pregunta: str, chat_history_list: list) -> 
 
     # 3. Extraer todas las imágenes generadas a una lista
     imagenes_paths = []
-    
+
     # Extraer marcadores [[IMAGEN_GENERADA:ruta]]
     marcadores_img = re.findall(r"\[\[IMAGEN_GENERADA:(.*?)\]\]", output_raw)
     for img_path in marcadores_img:
