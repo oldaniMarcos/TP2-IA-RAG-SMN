@@ -6,6 +6,33 @@ from pathlib import Path
 from PIL import Image as PILImage
 from agente_SMN import responder_usuario_para_streamlit
 
+import re
+
+def normalizar_markdown_streamlit(texto: str) -> str:
+    """
+    Convierte viñetas inline (•) en elementos Markdown
+    separados y anidados cuando aparecen dentro de una lista.
+    """
+
+    lineas = texto.splitlines()
+    resultado = []
+
+    for linea in lineas:
+        if " • " in linea:
+            partes = linea.split(" • ")
+
+            # Conservar el encabezado o primer segmento
+            resultado.append(partes[0].rstrip())
+
+            # Convertir cada viñeta en un elemento anidado
+            for parte in partes[1:]:
+                if parte.strip():
+                    resultado.append(f"  - {parte.strip()}")
+        else:
+            resultado.append(linea)
+
+    return "\n".join(resultado)
+
 
 # =========================================================
 # CONFIGURACIÓN GENERAL
@@ -164,7 +191,9 @@ def mostrar_mensaje(mensaje, indice_mensaje):
 
     with st.chat_message(mensaje["role"]):
 
-        st.markdown(mensaje["content"])
+        st.markdown(
+            normalizar_markdown_streamlit(mensaje["content"])
+        )
 
         imagenes = mensaje.get("imagenes", [])
 
@@ -270,17 +299,23 @@ if not st.session_state.messages:
         )
     ]
 
-    columnas = st.columns(3)
+    columnas = st.columns(3, gap="medium")
 
     for i, (titulo, consulta) in enumerate(ejemplos_inicio):
 
         with columnas[i]:
 
-            with st.container(border=True):
+            # Tarjeta con altura uniforme
+            with st.container(border=True, height=190):
 
+                # Título
                 st.markdown(f"**{titulo}**")
-                st.caption(consulta)
 
+                # Espacio reservado para la descripción
+                with st.container(height=60, border=False):
+                    st.caption(consulta)
+
+                # Botón alineado con las demás tarjetas
                 st.button(
                     "Probar consulta",
                     key=f"inicio_{i}",
@@ -348,7 +383,9 @@ if prompt:
                 imagenes_res = []
 
         # Mostrar respuesta textual
-        st.markdown(texto_res)
+        st.markdown(
+            normalizar_markdown_streamlit(texto_res)
+        )
 
         # Mostrar imágenes
         indice_mensaje = len(st.session_state.messages)
