@@ -1,6 +1,242 @@
 
 FECHA    TMAX  TMIN  NOMBRE                                                                         
 -------- ----- ----- ----------------------------------------                                       
+13102026  18.5  12.9 AEROPARQUE AERO                                                                
+13102026  17.2   9.7 AZUL AERO                                                                      
+13102026  16.8   7.9 BAHIA BLANCA AERO                                                              
+13102026  17.8   5.5 BARILOCHE AERO                                                                 
+13102026  -9.5 -22.7 BASE BELGRANO II                                                               
+13102026   3.9  -3.4 BASE CARLINI (EX JUBANY)                                                       
+13102026   9.5  -2.6 BASE ESPERANZA                                                                 
+13102026   7.0  -2.2 BASE MARAMBIO                                                                  
+13102026  -2.2  -6.0 BASE ORCADAS                                                                   
+13102026   5.0  -7.9 BASE SAN MARTIN                                                                
+13102026  15.7   9.5 BENITO JUAREZ AERO                                                             
+13102026  19.0  14.6 BERNARDO DE IRIGOYEN AERO                                                      
+13102026  17.7   8.0 BOLIVAR AERO                                                                   
+13102026  20.0  13.1 BUENOS AIRES OBSERVATORIO                                                      
+13102026        11.1 CAMPO DE MAYO AERO                                                             
+13102026  24.0  11.4 CATAMARCA AERO                                                                 
+13102026  20.0  11.6 CERES AERO                                                                     
+13102026  21.3  11.4 CHAMICAL AERO                                                                  
+13102026  14.5   8.8 CHAPELCO AERO                                                                  
+13102026  22.4  10.1 CHEPES                                                                         
+13102026  20.5  11.0 CHILECITO AERO                                                                 
+13102026  15.8   8.9 COMODORO RIVADAVIA AERO                                                        
+13102026  22.8  12.0 CONCORDIA AERO                                                                 
+13102026  15.2   8.5 CORDOBA AERO                                                                   
+13102026  17.0  11.8 CORDOBA OBSERVATORIO                                                           
+13102026  15.7   8.4 CORONEL SUAREZ AERO                                                            
+13102026  20.2  14.6 CORRIENTES AERO                                                                
+13102026  17.0   9.8 DOLORES AERO                                                                   
+13102026  22.4   5.2 EL BOLSON AERO                                                                 
+13102026  17.4   1.4 EL CALAFATE AERO                                                               
+13102026  20.0  12.2 EL PALOMAR AERO                                                                
+13102026         9.5 ESCUELA DE AVIACION MILITAR AERO                                               
+13102026  18.2   3.4 ESQUEL AERO                                                                    
+13102026  19.5  11.3 EZEIZA AERO                                                                    
+13102026        15.1 FORMOSA AERO                                                                   
+13102026  18.1  10.6 GENERAL PICO AERO                                                              
+13102026  17.5   3.0 GOBERNADOR GREGORES AERO                                                       
+13102026  21.0  12.0 GUALEGUAYCHU AERO                                                              
+13102026  21.3  16.3 IGUAZU AERO                                                                    
+13102026  20.5  16.2 ITUZAINGO                                                                      
+13102026  17.8   8.9 JACHAL                                                                         
+13102026  21.7  13.0 JUJUY AERO                                                                     
+13102026  19.0  11.8 JUJUY U N                                                                      
+13102026  19.7  10.3 JUNIN AERO                                                                     
+13102026  18.5  11.5 LA PLATA AERO                                                                  
+13102026  20.5   3.2 LA QUIACA OBSERVATORIO                                                         
+13102026  21.5  14.2 LA RIOJA AERO                                                                  
+13102026  19.0   9.7 LABOULAYE AERO                                                                 
+13102026  17.5  11.2 LAS FLORES                                                                     
+13102026  20.1  14.6 LAS LOMITAS                                                                    
+13102026  10.0   4.0 MALARGUE AERO                                                                  
+13102026  18.0   7.0 MAQUINCHAO                                                                     
+13102026  13.8  10.2 MAR DEL PLATA AERO                                                             
+13102026  18.2   9.2 MARCOS JUAREZ AERO                                                             
+13102026             MARIANO MORENO AERO                                                            
+13102026  16.9  11.3 MENDOZA AERO                                                                   
+13102026  16.4  10.2 MENDOZA OBSERVATORIO                                                           
+13102026  23.4  13.0 MERCEDES AERO (CTES)                                                           
+13102026        11.5 MERLO AERO                                                                     
+13102026  14.4  12.0 METAN                                                                          
+13102026  23.5  13.3 MONTE CASEROS AERO                                                             
+13102026  19.6  12.2 MORON AERO                                                                     
+13102026  18.2  12.7 NEUQUEN AERO                                                                   
+13102026  19.0   7.9 NUEVE DE JULIO                                                                 
+13102026  21.2  14.0 OBERA                                                                          
+13102026  15.5   5.1 OLAVARRIA AERO                                                                 
+13102026  26.2  16.3 ORAN AERO                                                                      
+13102026  18.6  10.0 PARANA AERO                                                                    
+13102026  19.7   9.5 PASO DE INDIOS                                                                 
+13102026  24.0  14.7 PASO DE LOS LIBRES AERO                                                        
+13102026  17.5  10.2 PEHUAJO AERO                                                                   
+13102026  20.2   2.3 PERITO MORENO AERO                                                             
+13102026  15.3   8.5 PIGUE AERO                                                                     
+13102026  17.4  11.0 PILAR OBSERVATORIO                                                             
+13102026  20.8  16.9 POSADAS AERO                                                                   
+13102026  19.5  13.9 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
+13102026  10.0   5.2 PUERTO DESEADO AERO                                                            
+13102026  21.2  10.1 PUERTO MADRYN AERO                                                             
+13102026  17.0  12.0 PUNTA INDIO B.A.                                                               
+13102026  18.5  11.5 RAFAELA AERO                                                                   
+13102026  21.4  13.3 RECONQUISTA AERO                                                               
+13102026  20.8  15.2 RESISTENCIA AERO                                                               
+13102026  14.6  10.2 RIO CUARTO AERO                                                                
+13102026  15.2   4.2 RIO GALLEGOS AERO                                                              
+13102026  11.8   2.4 RIO GRANDE B.A.                                                                
+13102026  28.0  15.8 RIVADAVIA                                                                      
+13102026  19.4  11.2 ROSARIO AERO                                                                   
+13102026  19.6  10.9 SALTA AERO                                                                     
+13102026  20.5  11.8 SAN ANTONIO OESTE AERO                                                         
+13102026  18.7  12.9 SAN FERNANDO AERO                                                              
+13102026  20.2  12.2 SAN JUAN AERO                                                                  
+13102026  15.8   4.4 SAN JULIAN AERO                                                                
+13102026  15.6   9.5 SAN LUIS AERO                                                                  
+13102026  18.1   9.7 SAN MARTIN (MZA)                                                               
+13102026  14.9   7.9 SAN RAFAEL AERO                                                                
+13102026  16.8   2.0 SANTA CRUZ AERO                                                                
+13102026  17.6   8.7 SANTA ROSA AERO                                                                
+13102026  18.8   9.7 SANTA ROSA DE CONLARA AERO                                                     
+13102026  18.3  13.8 SANTIAGO DEL ESTERO AERO                                                       
+13102026  19.6  11.5 SAUCE VIEJO AERO                                                               
+13102026        11.6 SUNCHALES AERO                                                                 
+13102026  17.2   8.7 TANDIL AERO                                                                    
+13102026  22.7  15.8 TARTAGAL AERO                                                                  
+13102026  19.4  14.0 TERMAS DE RIO HONDO AERO                                                       
+13102026  24.0   9.5 TINOGASTA                                                                      
+13102026  24.0  10.8 TRELEW AERO                                                                    
+13102026  17.8  11.0 TRENQUE LAUQUEN                                                                
+13102026  16.5   8.2 TRES ARROYOS                                                                   
+13102026  16.6  13.4 TUCUMAN AERO                                                                   
+13102026  10.0   5.2 USHUAIA AERO                                                                   
+13102026  15.0   1.0 USPALLATA                                                                      
+13102026  17.6   8.5 VENADO TUERTO AERO                                                             
+13102026  15.7   9.8 VICTORICA                                                                      
+13102026         7.5 VIEDMA AERO                                                                    
+13102026  16.4  12.4 VILLA DE MARIA DEL RIO SECO                                                    
+13102026  20.5  11.7 VILLA DOLORES AERO                                                             
+13102026  15.0  10.7 VILLA GESELL AERO                                                              
+13102026  14.9   9.8 VILLA REYNOLDS AERO                                                            
+12102026  15.1  10.6 AEROPARQUE AERO                                                                
+12102026  13.5   3.3 AZUL AERO                                                                      
+12102026  16.9   5.2 BAHIA BLANCA AERO                                                              
+12102026  18.2   7.6 BARILOCHE AERO                                                                 
+12102026 -14.5 -22.7 BASE BELGRANO II                                                               
+12102026   1.5  -2.3 BASE CARLINI (EX JUBANY)                                                       
+12102026   6.6  -1.6 BASE ESPERANZA                                                                 
+12102026   3.6  -1.6 BASE MARAMBIO                                                                  
+12102026   2.0  -4.8 BASE ORCADAS                                                                   
+12102026   3.0  -7.3 BASE SAN MARTIN                                                                
+12102026  12.8       BENITO JUAREZ AERO                                                             
+12102026  18.3  14.0 BERNARDO DE IRIGOYEN AERO                                                      
+12102026  15.4   8.8 BOLIVAR AERO                                                                   
+12102026  15.1  11.0 BUENOS AIRES OBSERVATORIO                                                      
+12102026         8.3 CAMPO DE MAYO AERO                                                             
+12102026  25.5  12.0 CATAMARCA AERO                                                                 
+12102026  17.4  12.3 CERES AERO                                                                     
+12102026  17.0  11.1 CHAMICAL AERO                                                                  
+12102026  18.9   7.8 CHAPELCO AERO                                                                  
+12102026  20.5  11.0 CHEPES                                                                         
+12102026  20.2       CHILECITO AERO                                                                 
+12102026  20.9   7.9 COMODORO RIVADAVIA AERO                                                        
+12102026  18.2  11.7 CONCORDIA AERO                                                                 
+12102026  15.7  10.4 CORDOBA AERO                                                                   
+12102026  15.4  11.2 CORDOBA OBSERVATORIO                                                           
+12102026  14.0   7.4 CORONEL SUAREZ AERO                                                            
+12102026  18.8  14.7 CORRIENTES AERO                                                                
+12102026  14.2   3.5 DOLORES AERO                                                                   
+12102026  19.1   6.7 EL BOLSON AERO                                                                 
+12102026  17.4   7.4 EL CALAFATE AERO                                                               
+12102026  15.0  10.5 EL PALOMAR AERO                                                                
+12102026        11.0 ESCUELA DE AVIACION MILITAR AERO                                               
+12102026  16.9   2.5 ESQUEL AERO                                                                    
+12102026  15.5   9.0 EZEIZA AERO                                                                    
+12102026        17.5 FORMOSA AERO                                                                   
+12102026  15.7   9.4 GENERAL PICO AERO                                                              
+12102026  18.5  12.0 GOBERNADOR GREGORES AERO                                                       
+12102026  16.2  11.0 GUALEGUAYCHU AERO                                                              
+12102026  20.3  17.4 IGUAZU AERO                                                                    
+12102026  20.0  16.6 ITUZAINGO                                                                      
+12102026  21.4  10.4 JACHAL                                                                         
+12102026  18.8  12.7 JUJUY AERO                                                                     
+12102026  15.4  11.5 JUJUY U N                                                                      
+12102026  16.7   8.9 JUNIN AERO                                                                     
+12102026  15.0   8.8 LA PLATA AERO                                                                  
+12102026  20.0   2.4 LA QUIACA OBSERVATORIO                                                         
+12102026  20.4  13.6 LA RIOJA AERO                                                                  
+12102026  16.0  10.1 LABOULAYE AERO                                                                 
+12102026  14.5       LAS FLORES                                                                     
+12102026  21.0  16.4 LAS LOMITAS                                                                    
+12102026  14.4   6.4 MALARGUE AERO                                                                  
+12102026  15.0   5.0 MAQUINCHAO                                                                     
+12102026  13.0   8.8 MAR DEL PLATA AERO                                                             
+12102026  18.5  11.9 MARCOS JUAREZ AERO                                                             
+12102026             MARIANO MORENO AERO                                                            
+12102026  19.7  10.0 MENDOZA AERO                                                                   
+12102026  19.0   8.5 MENDOZA OBSERVATORIO                                                           
+12102026  17.2  14.0 MERCEDES AERO (CTES)                                                           
+12102026         9.0 MERLO AERO                                                                     
+12102026  15.2  12.0 METAN                                                                          
+12102026  17.6  13.7 MONTE CASEROS AERO                                                             
+12102026  16.0  10.0 MORON AERO                                                                     
+12102026  17.7  11.2 NEUQUEN AERO                                                                   
+12102026  15.8   8.5 NUEVE DE JULIO                                                                 
+12102026  22.0  15.8 OBERA                                                                          
+12102026  13.5   5.1 OLAVARRIA AERO                                                                 
+12102026  23.8  15.8 ORAN AERO                                                                      
+12102026  19.0  11.2 PARANA AERO                                                                    
+12102026  20.5   8.5 PASO DE INDIOS                                                                 
+12102026  18.5  14.4 PASO DE LOS LIBRES AERO                                                        
+12102026  15.2   9.8 PEHUAJO AERO                                                                   
+12102026  16.3   6.0 PERITO MORENO AERO                                                             
+12102026  13.3   7.2 PIGUE AERO                                                                     
+12102026  15.3  11.2 PILAR OBSERVATORIO                                                             
+12102026  20.7  17.3 POSADAS AERO                                                                   
+12102026  17.8  15.0 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
+12102026  15.6   6.0 PUERTO DESEADO AERO                                                            
+12102026  18.6   9.5 PUERTO MADRYN AERO                                                             
+12102026  14.2  10.0 PUNTA INDIO B.A.                                                               
+12102026  18.0  11.7 RAFAELA AERO                                                                   
+12102026  17.4  14.1 RECONQUISTA AERO                                                               
+12102026  19.3  15.0 RESISTENCIA AERO                                                               
+12102026  13.7  10.8 RIO CUARTO AERO                                                                
+12102026  13.0   6.6 RIO GALLEGOS AERO                                                              
+12102026   7.6   5.0 RIO GRANDE B.A.                                                                
+12102026  24.5  13.8 RIVADAVIA                                                                      
+12102026  17.6  10.8 ROSARIO AERO                                                                   
+12102026  17.4  11.8 SALTA AERO                                                                     
+12102026  16.7   9.8 SAN ANTONIO OESTE AERO                                                         
+12102026  14.8  10.9 SAN FERNANDO AERO                                                              
+12102026  23.5  11.4 SAN JUAN AERO                                                                  
+12102026  21.5   7.4 SAN JULIAN AERO                                                                
+12102026  15.6  11.5 SAN LUIS AERO                                                                  
+12102026  21.6  11.6 SAN MARTIN (MZA)                                                               
+12102026  15.8  10.0 SAN RAFAEL AERO                                                                
+12102026  22.8   6.6 SANTA CRUZ AERO                                                                
+12102026  16.6   9.3 SANTA ROSA AERO                                                                
+12102026  18.5   8.5 SANTA ROSA DE CONLARA AERO                                                     
+12102026  18.0  14.6 SANTIAGO DEL ESTERO AERO                                                       
+12102026  19.5  12.4 SAUCE VIEJO AERO                                                               
+12102026  18.8  12.4 SUNCHALES AERO                                                                 
+12102026  12.1   2.8 TANDIL AERO                                                                    
+12102026  22.7  15.0 TARTAGAL AERO                                                                  
+12102026  17.2  14.0 TERMAS DE RIO HONDO AERO                                                       
+12102026  25.0  11.4 TINOGASTA                                                                      
+12102026  21.0   9.8 TRELEW AERO                                                                    
+12102026  15.0  10.0 TRENQUE LAUQUEN                                                                
+12102026  15.3   3.4 TRES ARROYOS                                                                   
+12102026  17.2  13.1 TUCUMAN AERO                                                                   
+12102026  17.5   7.4 USHUAIA AERO                                                                   
+12102026  15.5   5.2 USPALLATA                                                                      
+12102026  17.8   9.6 VENADO TUERTO AERO                                                             
+12102026  14.3  10.1 VICTORICA                                                                      
+12102026         7.4 VIEDMA AERO                                                                    
+12102026  15.6       VILLA DE MARIA DEL RIO SECO                                                    
+12102026  19.1       VILLA DOLORES AERO                                                             
+12102026  13.3   8.7 VILLA GESELL AERO                                                              
+12102026  16.6  10.6 VILLA REYNOLDS AERO                                                            
 11102026  15.0   8.7 AEROPARQUE AERO                                                                
 11102026  15.5   1.3 AZUL AERO                                                                      
 11102026  15.8   5.5 BAHIA BLANCA AERO                                                              
@@ -21,13 +257,14 @@ FECHA    TMAX  TMIN  NOMBRE
 11102026  19.3  11.4 CHAMICAL AERO                                                                  
 11102026  14.2   7.3 CHAPELCO AERO                                                                  
 11102026  16.0  10.6 CHEPES                                                                         
+11102026             CHILECITO AERO                                                                 
 11102026  15.7   5.8 COMODORO RIVADAVIA AERO                                                        
 11102026  21.0  11.5 CONCORDIA AERO                                                                 
 11102026  16.1  10.5 CORDOBA AERO                                                                   
-11102026        12.4 CORDOBA OBSERVATORIO                                                           
+11102026  17.0  12.4 CORDOBA OBSERVATORIO                                                           
 11102026  14.0   6.8 CORONEL SUAREZ AERO                                                            
 11102026  20.6  14.8 CORRIENTES AERO                                                                
-11102026         8.7 DOLORES AERO                                                                   
+11102026  14.6   8.7 DOLORES AERO                                                                   
 11102026  19.2   7.6 EL BOLSON AERO                                                                 
 11102026  20.4   6.9 EL CALAFATE AERO                                                               
 11102026  15.4   8.7 EL PALOMAR AERO                                                                
@@ -76,10 +313,10 @@ FECHA    TMAX  TMIN  NOMBRE
 11102026  17.4  11.0 PILAR OBSERVATORIO                                                             
 11102026  25.7  16.2 POSADAS AERO                                                                   
 11102026  20.1  15.4 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
-11102026         5.0 PUERTO DESEADO AERO                                                            
+11102026  11.0   5.0 PUERTO DESEADO AERO                                                            
 11102026  16.2   7.6 PUERTO MADRYN AERO                                                             
 11102026  14.2   8.0 PUNTA INDIO B.A.                                                               
-11102026        10.7 RAFAELA AERO                                                                   
+11102026  18.9  10.7 RAFAELA AERO                                                                   
 11102026  21.5  14.6 RECONQUISTA AERO                                                               
 11102026  20.6  15.2 RESISTENCIA AERO                                                               
 11102026  16.5  10.6 RIO CUARTO AERO                                                                
@@ -42715,239 +42952,3 @@ FECHA    TMAX  TMIN  NOMBRE
 14102025  33.0  12.4 VILLA DOLORES AERO                                                             
 14102025  18.6   9.4 VILLA GESELL AERO                                                              
 14102025  32.4   3.8 VILLA REYNOLDS AERO                                                            
-13102025  26.0  12.9 AEROPARQUE AERO                                                                
-13102025  24.9   7.7 AZUL AERO                                                                      
-13102025  22.7   3.8 BAHIA BLANCA AERO                                                              
-13102025  14.7   7.1 BARILOCHE AERO                                                                 
-13102025  -8.4 -16.1 BASE BELGRANO II                                                               
-13102025  -5.8  -7.9 BASE CARLINI (EX JUBANY)                                                       
-13102025  -6.5 -10.2 BASE ESPERANZA                                                                 
-13102025 -10.0 -14.4 BASE MARAMBIO                                                                  
-13102025  -1.0  -8.0 BASE ORCADAS                                                                   
-13102025  -1.2  -6.2 BASE SAN MARTIN                                                                
-13102025  22.4   7.8 BENITO JUAREZ AERO                                                             
-13102025  23.0  13.5 BERNARDO DE IRIGOYEN AERO                                                      
-13102025  26.3   6.0 BOLIVAR AERO                                                                   
-13102025  26.4  13.3 BUENOS AIRES OBSERVATORIO                                                      
-13102025  24.7  10.1 CAMPO DE MAYO AERO                                                             
-13102025  34.4  13.9 CATAMARCA AERO                                                                 
-13102025  28.5  13.4 CERES AERO                                                                     
-13102025  32.5   9.8 CHAMICAL AERO                                                                  
-13102025  16.0   6.8 CHAPELCO AERO                                                                  
-13102025  31.0  14.1 CHEPES                                                                         
-13102025         9.5 CHILECITO AERO                                                                 
-13102025  21.4  10.8 COMODORO RIVADAVIA AERO                                                        
-13102025  26.5  12.5 CONCORDIA AERO                                                                 
-13102025  28.4   6.4 CORDOBA AERO                                                                   
-13102025  31.0   9.9 CORDOBA OBSERVATORIO                                                           
-13102025  23.3   4.0 CORONEL SUAREZ AERO                                                            
-13102025  25.5  13.7 CORRIENTES AERO                                                                
-13102025  21.8  13.0 DOLORES AERO                                                                   
-13102025  18.8   6.6 EL BOLSON AERO                                                                 
-13102025  12.4   2.9 EL CALAFATE AERO                                                               
-13102025  24.5  12.2 EL PALOMAR AERO                                                                
-13102025         6.0 ESCUELA DE AVIACION MILITAR AERO                                               
-13102025  14.4   8.0 ESQUEL AERO                                                                    
-13102025  23.5  12.0 EZEIZA AERO                                                                    
-13102025  25.8  12.4 FORMOSA AERO                                                                   
-13102025         7.3 GENERAL PICO AERO                                                              
-13102025  15.0   5.0 GOBERNADOR GREGORES AERO                                                       
-13102025  24.5  11.0 GUALEGUAYCHU AERO                                                              
-13102025  25.4  16.6 IGUAZU AERO                                                                    
-13102025  25.5  14.0 ITUZAINGO                                                                      
-13102025  28.5   3.4 JACHAL                                                                         
-13102025  29.9  13.4 JUJUY AERO                                                                     
-13102025  28.0   9.9 JUJUY U N                                                                      
-13102025  26.1   8.5 JUNIN AERO                                                                     
-13102025  23.4  12.5 LA PLATA AERO                                                                  
-13102025  24.3   4.0 LA QUIACA OBSERVATORIO                                                         
-13102025  33.3   9.5 LA RIOJA AERO                                                                  
-13102025  30.2   9.2 LABOULAYE AERO                                                                 
-13102025  24.0  11.0 LAS FLORES                                                                     
-13102025  31.5  17.1 LAS LOMITAS                                                                    
-13102025  26.6   3.8 MALARGUE AERO                                                                  
-13102025  20.0   5.4 MAQUINCHAO                                                                     
-13102025  18.5  11.3 MAR DEL PLATA AERO                                                             
-13102025  28.3   7.6 MARCOS JUAREZ AERO                                                             
-13102025        10.6 MARIANO MORENO AERO                                                            
-13102025  28.8   8.5 MENDOZA AERO                                                                   
-13102025         9.0 MENDOZA OBSERVATORIO                                                           
-13102025  27.2   9.5 MERCEDES AERO (CTES)                                                           
-13102025        11.0 MERLO AERO                                                                     
-13102025  29.4  11.9 METAN                                                                          
-13102025  26.4  11.9 MONTE CASEROS AERO                                                             
-13102025  24.4  11.4 MORON AERO                                                                     
-13102025  23.2  12.4 NEUQUEN AERO                                                                   
-13102025  27.0   8.0 NUEVE DE JULIO                                                                 
-13102025  27.0  13.8 OBERA                                                                          
-13102025  24.8   5.8 OLAVARRIA AERO                                                                 
-13102025  32.8  19.7 ORAN AERO                                                                      
-13102025  27.4  11.8 PARANA AERO                                                                    
-13102025  18.6   8.4 PASO DE INDIOS                                                                 
-13102025  26.0  14.0 PASO DE LOS LIBRES AERO                                                        
-13102025  27.3  10.2 PEHUAJO AERO                                                                   
-13102025  15.4   6.2 PERITO MORENO AERO                                                             
-13102025  22.0   6.4 PIGUE AERO                                                                     
-13102025  29.8   9.0 PILAR OBSERVATORIO                                                             
-13102025  26.4  14.8 POSADAS AERO                                                                   
-13102025  28.7   7.0 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
-13102025  18.5   9.7 PUERTO DESEADO AERO                                                            
-13102025  23.6   9.2 PUERTO MADRYN AERO                                                             
-13102025  22.0  13.0 PUNTA INDIO B.A.                                                               
-13102025  29.2  10.0 RAFAELA AERO                                                                   
-13102025  27.6  12.3 RECONQUISTA AERO                                                               
-13102025  26.5  11.4 RESISTENCIA AERO                                                               
-13102025  30.2   7.7 RIO CUARTO AERO                                                                
-13102025  15.3   4.0 RIO GALLEGOS AERO                                                              
-13102025  13.0   4.0 RIO GRANDE B.A.                                                                
-13102025  34.5  14.8 RIVADAVIA                                                                      
-13102025  27.3  10.2 ROSARIO AERO                                                                   
-13102025  27.2   6.6 SALTA AERO                                                                     
-13102025  22.4   5.0 SAN ANTONIO OESTE AERO                                                         
-13102025  24.8  12.2 SAN FERNANDO AERO                                                              
-13102025  30.4   6.0 SAN JUAN AERO                                                                  
-13102025  17.2   7.6 SAN JULIAN AERO                                                                
-13102025  30.6  10.0 SAN LUIS AERO                                                                  
-13102025  29.8   8.1 SAN MARTIN (MZA)                                                               
-13102025  30.0   5.5 SAN RAFAEL AERO                                                                
-13102025  16.8   5.0 SANTA CRUZ AERO                                                                
-13102025  26.5   6.7 SANTA ROSA AERO                                                                
-13102025  29.8   2.7 SANTA ROSA DE CONLARA AERO                                                     
-13102025  32.7   6.6 SANTIAGO DEL ESTERO AERO                                                       
-13102025  28.4   8.2 SAUCE VIEJO AERO                                                               
-13102025  29.5  10.0 SUNCHALES AERO                                                                 
-13102025  22.4  10.3 TANDIL AERO                                                                    
-13102025             TARTAGAL AERO                                                                  
-13102025  31.6   7.5 TERMAS DE RIO HONDO AERO                                                       
-13102025  31.0   7.5 TINOGASTA                                                                      
-13102025  23.4   9.3 TRELEW AERO                                                                    
-13102025  29.4   8.5 TRENQUE LAUQUEN                                                                
-13102025  25.0   7.8 TRES ARROYOS                                                                   
-13102025  32.7  13.5 TUCUMAN AERO                                                                   
-13102025   9.9   4.2 USHUAIA AERO                                                                   
-13102025  27.0       USPALLATA                                                                      
-13102025  27.1   8.3 VENADO TUERTO AERO                                                             
-13102025  29.0   9.5 VICTORICA                                                                      
-13102025  22.2   3.2 VIEDMA AERO                                                                    
-13102025  30.6   6.6 VILLA DE MARIA DEL RIO SECO                                                    
-13102025  30.3   6.6 VILLA DOLORES AERO                                                             
-13102025  18.2  10.5 VILLA GESELL AERO                                                              
-13102025  30.0   3.0 VILLA REYNOLDS AERO                                                            
-12102025  23.0  14.2 AEROPARQUE AERO                                                                
-12102025  14.2  10.2 AZUL AERO                                                                      
-12102025  17.8   8.8 BAHIA BLANCA AERO                                                              
-12102025  17.4  -1.6 BARILOCHE AERO                                                                 
-12102025  -2.1 -14.5 BASE BELGRANO II                                                               
-12102025  -2.0  -7.5 BASE CARLINI (EX JUBANY)                                                       
-12102025  -6.5 -10.7 BASE ESPERANZA                                                                 
-12102025 -10.7 -15.0 BASE MARAMBIO                                                                  
-12102025  -0.8  -7.5 BASE ORCADAS                                                                   
-12102025  -2.5  -6.4 BASE SAN MARTIN                                                                
-12102025  11.6   9.4 BENITO JUAREZ AERO                                                             
-12102025  24.8  16.5 BERNARDO DE IRIGOYEN AERO                                                      
-12102025  16.1   9.7 BOLIVAR AERO                                                                   
-12102025  21.4  14.4 BUENOS AIRES OBSERVATORIO                                                      
-12102025  20.0  13.2 CAMPO DE MAYO AERO                                                             
-12102025  30.0  10.4 CATAMARCA AERO                                                                 
-12102025  26.6  13.0 CERES AERO                                                                     
-12102025  27.6   8.1 CHAMICAL AERO                                                                  
-12102025  20.5   1.2 CHAPELCO AERO                                                                  
-12102025  25.0  10.2 CHEPES                                                                         
-12102025             CHILECITO AERO                                                                 
-12102025  22.5  10.5 COMODORO RIVADAVIA AERO                                                        
-12102025  25.0  14.6 CONCORDIA AERO                                                                 
-12102025  24.9   9.5 CORDOBA AERO                                                                   
-12102025  27.5  12.8 CORDOBA OBSERVATORIO                                                           
-12102025  17.5   8.4 CORONEL SUAREZ AERO                                                            
-12102025  27.3  17.8 CORRIENTES AERO                                                                
-12102025  18.4  13.7 DOLORES AERO                                                                   
-12102025  19.5   0.5 EL BOLSON AERO                                                                 
-12102025  14.4   9.4 EL CALAFATE AERO                                                               
-12102025  21.0  14.0 EL PALOMAR AERO                                                                
-12102025         9.5 ESCUELA DE AVIACION MILITAR AERO                                               
-12102025  16.3   1.6 ESQUEL AERO                                                                    
-12102025  21.0  12.2 EZEIZA AERO                                                                    
-12102025  28.2  17.5 FORMOSA AERO                                                                   
-12102025         9.5 GENERAL PICO AERO                                                              
-12102025  19.5   9.0 GOBERNADOR GREGORES AERO                                                       
-12102025  23.6  13.2 GUALEGUAYCHU AERO                                                              
-12102025  26.1  18.6 IGUAZU AERO                                                                    
-12102025  25.4  17.8 ITUZAINGO                                                                      
-12102025  21.4   3.9 JACHAL                                                                         
-12102025  28.9  19.2 JUJUY AERO                                                                     
-12102025  25.8  14.7 JUJUY U N                                                                      
-12102025  17.6  11.0 JUNIN AERO                                                                     
-12102025  20.0  13.3 LA PLATA AERO                                                                  
-12102025  24.9   4.8 LA QUIACA OBSERVATORIO                                                         
-12102025  31.0  13.6 LA RIOJA AERO                                                                  
-12102025  23.5   8.5 LABOULAYE AERO                                                                 
-12102025  15.9  12.5 LAS FLORES                                                                     
-12102025  32.0  20.6 LAS LOMITAS                                                                    
-12102025  19.6  -1.5 MALARGUE AERO                                                                  
-12102025  19.2   0.4 MAQUINCHAO                                                                     
-12102025  16.0  12.6 MAR DEL PLATA AERO                                                             
-12102025  24.2   8.0 MARCOS JUAREZ AERO                                                             
-12102025        13.0 MARIANO MORENO AERO                                                            
-12102025  23.4   8.2 MENDOZA AERO                                                                   
-12102025         7.2 MENDOZA OBSERVATORIO                                                           
-12102025  25.4  15.0 MERCEDES AERO (CTES)                                                           
-12102025        13.4 MERLO AERO                                                                     
-12102025  26.8  18.0 METAN                                                                          
-12102025  25.8  16.9 MONTE CASEROS AERO                                                             
-12102025  20.4  13.4 MORON AERO                                                                     
-12102025  24.7  10.1 NEUQUEN AERO                                                                   
-12102025  16.7   9.9 NUEVE DE JULIO                                                                 
-12102025             OBERA                                                                          
-12102025  14.5  10.1 OLAVARRIA AERO                                                                 
-12102025  31.4  18.9 ORAN AERO                                                                      
-12102025  24.0  11.0 PARANA AERO                                                                    
-12102025  20.8   6.6 PASO DE INDIOS                                                                 
-12102025  25.0  17.4 PASO DE LOS LIBRES AERO                                                        
-12102025  18.9  10.8 PEHUAJO AERO                                                                   
-12102025  15.3   6.5 PERITO MORENO AERO                                                             
-12102025  18.1   7.3 PIGUE AERO                                                                     
-12102025  26.1  12.0 PILAR OBSERVATORIO                                                             
-12102025  28.3  19.2 POSADAS AERO                                                                   
-12102025  29.2  16.2 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
-12102025  22.0   8.0 PUERTO DESEADO AERO                                                            
-12102025  22.5   5.4 PUERTO MADRYN AERO                                                             
-12102025  19.5  13.2 PUNTA INDIO B.A.                                                               
-12102025  26.5  10.3 RAFAELA AERO                                                                   
-12102025  27.6  14.2 RECONQUISTA AERO                                                               
-12102025  28.6  16.8 RESISTENCIA AERO                                                               
-12102025  23.4  10.8 RIO CUARTO AERO                                                                
-12102025  19.5   5.6 RIO GALLEGOS AERO                                                              
-12102025  13.9   5.4 RIO GRANDE B.A.                                                                
-12102025  35.0  23.3 RIVADAVIA                                                                      
-12102025  22.2  10.1 ROSARIO AERO                                                                   
-12102025  26.5  12.0 SALTA AERO                                                                     
-12102025  20.0   9.5 SAN ANTONIO OESTE AERO                                                         
-12102025  20.1  13.7 SAN FERNANDO AERO                                                              
-12102025  23.6   6.2 SAN JUAN AERO                                                                  
-12102025  21.0  12.4 SAN JULIAN AERO                                                                
-12102025  22.9   7.2 SAN LUIS AERO                                                                  
-12102025  23.6   7.1 SAN MARTIN (MZA)                                                               
-12102025  23.2   6.1 SAN RAFAEL AERO                                                                
-12102025  18.3  10.4 SANTA CRUZ AERO                                                                
-12102025  22.8   9.4 SANTA ROSA AERO                                                                
-12102025  24.0   0.4 SANTA ROSA DE CONLARA AERO                                                     
-12102025  32.2  16.8 SANTIAGO DEL ESTERO AERO                                                       
-12102025  25.5  11.0 SAUCE VIEJO AERO                                                               
-12102025  29.8   9.8 SUNCHALES AERO                                                                 
-12102025  14.6  10.8 TANDIL AERO                                                                    
-12102025             TARTAGAL AERO                                                                  
-12102025  31.2  15.5 TERMAS DE RIO HONDO AERO                                                       
-12102025  26.5  10.0 TINOGASTA                                                                      
-12102025  25.2   6.7 TRELEW AERO                                                                    
-12102025  22.1  11.0 TRENQUE LAUQUEN                                                                
-12102025  12.9  11.3 TRES ARROYOS                                                                   
-12102025  29.0  16.0 TUCUMAN AERO                                                                   
-12102025  14.1   6.2 USHUAIA AERO                                                                   
-12102025  25.0       USPALLATA                                                                      
-12102025  20.9   9.4 VENADO TUERTO AERO                                                             
-12102025  24.0   8.2 VICTORICA                                                                      
-12102025  21.2   9.7 VIEDMA AERO                                                                    
-12102025  27.8  11.7 VILLA DE MARIA DEL RIO SECO                                                    
-12102025  25.3   3.0 VILLA DOLORES AERO                                                             
-12102025  16.4  12.8 VILLA GESELL AERO                                                              
-12102025  24.3   6.7 VILLA REYNOLDS AERO                                                            
