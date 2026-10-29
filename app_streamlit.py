@@ -228,13 +228,26 @@ with st.sidebar:
 
         **¿Qué podés hacer?**
 
-        - Consultar datos meteorológicos.
-        - Analizar temperaturas históricas.
-        - Comparar estaciones.
-        - Generar gráficos y mapas.
         - Consultar información documental.
+        - Consultar evolución de temperaturas.
+        - Comparar estaciones.
+        - Generar climogramas.
+        - Obtener pronósticos.
+        - Obtener información sobre estaciones.
+        - Generar mapas.
         - Generar informes meteorológicos en PDF.
         """
+    )
+
+    st.button(
+        "Listar capacidades disponibles",
+        key="listar_capacidades",
+        on_click=seleccionar_consulta,
+        args=(
+            "Listá todas las capacidades y herramientas disponibles, "
+            "explicando brevemente qué hace cada una y dando un ejemplo.",
+        ),
+        width="stretch"
     )
 
     st.divider()
@@ -259,7 +272,7 @@ with st.sidebar:
 
     st.caption(
         "Las respuestas dependen de la disponibilidad "
-        "de datos y de las herramientas meteorológicas."
+        "de los datos."
     )
 
 
@@ -330,7 +343,7 @@ if not st.session_state.messages:
 # =========================================================
 
 prompt_chat = st.chat_input(
-    "Escribí tu consulta meteorológica..."
+    "Escribí tu consulta..."
 )
 
 # Priorizar consultas seleccionadas desde los ejemplos
@@ -358,7 +371,7 @@ if prompt:
     with st.chat_message("assistant"):
 
         with st.spinner(
-            "Procesando consulta y ejecutando herramientas..."
+            "Procesando consulta..."
         ):
 
             try:
